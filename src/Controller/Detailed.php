@@ -10,10 +10,10 @@ class Detailed extends AbstractController
 {
 
     /**
-     * @Route("/results/1/{id}")
+     * @Route("/results/1/{id<\d+>}", name="show_detail")
      */
 
-    public function round(): Response
+    public function round(int $id): Response
     {
         $model = ['Falke1', 'Adler', 'Bundeswehr'];
         $distance = ['10m', '9m', '23m'];
@@ -21,12 +21,12 @@ class Detailed extends AbstractController
         $partname = ['Günther', 'Armin', 'Rainer'];
         $date = ['25.10.2018', '25.10.2018','25.10.2018'];
 
-        return $this->render('pptt/round.html.twig', [
-            'model' => $model,
-            'distance' => $distance,
-            'duration' => $duration,
-            'partname' => $partname,
-            'date' => $date,
+        return $this->render('pptt/detail.html.twig', [
+            'model' => $model[$id],
+            'distance' => $distance[$id],
+            'duration' => $duration[$id],
+            'partname' => $partname[$id],
+            'date' => $date[$id],
         ]);
     }
 }

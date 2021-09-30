@@ -1,4 +1,3 @@
-{# templates/lucky/number.html.twig #}
 <table>
     <tr>
         <th>Plane Model</th>
@@ -15,9 +14,7 @@
         <td>{{ partname[i] }}</td>
         <td>{{ date[i] }}</td>
         <td>
-            <form action="">
-                <a href="{{ path('results/1',[model[i]]) }}"></a>
-            </form>
+                <a href="{{ path('show_detail', {'id': i}) }}">i</a>
         </td>
     </tr>
     {% endfor %}
