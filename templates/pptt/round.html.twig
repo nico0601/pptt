@@ -1,0 +1,24 @@
+{# templates/lucky/number.html.twig #}
+<table>
+    <tr>
+        <th>Plane Model</th>
+        <th>Flight Distance</th>
+        <th>Flight Duration</th>
+        <th>Participant</th>
+        <th>Date</th>
+    </tr>
+    {% for i in 0..model|length-1 %}
+    <tr>
+        <td>{{ model[i] }}</td>
+        <td>{{ distance[i] }}</td>
+        <td>{{ duration[i] }}</td>
+        <td>{{ partname[i] }}</td>
+        <td>{{ date[i] }}</td>
+        <td>
+            <form action="">
+                <a href="{{ path('results/1',[model[i]]) }}"></a>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
