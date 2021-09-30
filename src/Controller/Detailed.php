@@ -15,11 +15,47 @@ class Detailed extends AbstractController
 
     public function round(int $id): Response
     {
-        $model = ['Falke1', 'Adler', 'Bundeswehr'];
-        $distance = ['10m', '9m', '23m'];
-        $duration = ['5 sec', '4.7 sec', '10 sec'];
-        $partname = ['Günther', 'Armin', 'Rainer'];
-        $date = ['25.10.2018', '25.10.2018','25.10.2018'];
+        $round1 = [
+            '1' =>
+                ['model' => 'Falke1',
+                    'distance' => '10m',
+                    'duration' => '5 sec',
+                    'partname' => 'Günther',
+                    'date' => '25.10.2018'],
+            '2' =>
+                ['model' => 'Adler',
+                    'distance' => '9m',
+                    'duration' => '4.7 sec',
+                    'partname' => 'Armin',
+                    'date' => '25.10.2018'],
+            '3' =>
+                ['model' => 'Bundeswehr',
+                    'distance' => '23m',
+                    'duration' => '10 sec',
+                    'partname' => 'Rainer',
+                    'date' => '25.10.2018']];
+
+        $round2 = [
+            '1' =>
+                ['model' => 'Falke2',
+                    'distance' => '10.2m',
+                    'duration' => '5 sec',
+                    'partname' => 'Günther',
+                    'date' => '25.10.2019'],
+            '2' =>
+                ['model' => 'Adler2',
+                    'distance' => '9.9m',
+                    'duration' => '4.7 sec',
+                    'partname' => 'Armin',
+                    'date' => '25.10.2019'],
+            '3' =>
+                ['model' => 'Bundeswehr2',
+                    'distance' => '23.5m',
+                    'duration' => '10 sec',
+                    'partname' => 'Rainer',
+                    'date' => '25.10.2019']];
+
+        $rounds = [$round1, $round2];
 
         return $this->render('pptt/detail.html.twig', [
             'model' => $model[$id],
