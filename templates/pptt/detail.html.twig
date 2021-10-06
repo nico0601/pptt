@@ -35,7 +35,7 @@
     </ul>
 </div>
 
-<a class="btn btn-secondary" href="/results/{{ lang }}/{{ roundId }}" role="button">
+<a class="btn btn-secondary" href="{{ path('show_rounds', {'lang': lang, 'roundId': roundId}) }}" role="button">
     {% if lang == "en" %}
         {% trans %}Zurück{% endtrans %}
     {% else %}
@@ -43,7 +43,7 @@
     {% endif %}
 </a>
 
-<a class="btn btn-warning" href="/results/en/{{ roundId }}/{{ id }}" role="button">en</a>
-<a class="btn btn-warning" href="/results/de/{{ roundId }}/{{ id }}" role="button">de</a>
+<a class="btn btn-warning" href="{{ path('show_detail', {'lang': 'en', 'roundId': roundId, 'id': id}) }}" role="button">en</a>
+<a class="btn btn-warning" href="{{ path('show_detail', {'lang': 'de', 'roundId': roundId, 'id': id}) }}" role="button">de</a>
 </body>
 </html>
