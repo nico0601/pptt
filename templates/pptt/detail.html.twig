@@ -12,14 +12,38 @@
 <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="{{ model.img }}" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">Model: <strong>{{ model.model }}</strong></h5>
+        <h5 class="card-title">
+            {% if lang == "en" %}
+                {% trans %}Modell{% endtrans %}:
+            {% else %}
+                Modell:
+            {% endif %}
+            <strong>{{ model.model }}</strong></h5>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Flight Distance: {{ model.distance }}</li>
-        <li class="list-group-item">Flight Duration: {{ model.duration }}</li>
-        <li class="list-group-item">Participant: {{ model.partname }}</li>
-        <li class="list-group-item">Date: {{ model.date }}</li>
+        {% if lang == "en" %}
+            <li class="list-group-item">{% trans %}Flug Distanz{% endtrans %}: {{ model.distance }}</li>
+            <li class="list-group-item">{% trans %}Flug Dauer{% endtrans %}: {{ model.duration }}</li>
+            <li class="list-group-item">{% trans %}Teilnehmer{% endtrans %}: {{ model.partname }}</li>
+            <li class="list-group-item">{% trans %}Datum{% endtrans %}: {{ model.date }}</li>
+        {% else %}
+            <li class="list-group-item">Flug Distanz: {{ model.distance }}</li>
+            <li class="list-group-item">Flug Dauer: {{ model.duration }}</li>
+            <li class="list-group-item">Teilnehmer: {{ model.partname }}</li>
+            <li class="list-group-item">Datum: {{ model.date }}</li>
+        {% endif %}
     </ul>
 </div>
+
+<a class="btn btn-secondary" href="/results/{{ lang }}/{{ roundId }}" role="button">
+    {% if lang == "en" %}
+        {% trans %}Zurück{% endtrans %}
+    {% else %}
+        Zurück
+    {% endif %}
+</a>
+
+<a class="btn btn-warning" href="/results/en/{{ roundId }}/{{ id }}" role="button">en</a>
+<a class="btn btn-warning" href="/results/de/{{ roundId }}/{{ id }}" role="button">de</a>
 </body>
 </html>

@@ -5,15 +5,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Detailed extends AbstractController
 {
 
     /**
-     * @Route("/results/1/{id<\d+>}", name="show_detail")
+     * @Route("/results/{lang<\w+>}/{roundId<\d+>}/{id<\d+>}", name="show_detail")
      */
 
-    public function round(int $id): Response
+    public function round(string $lang, int $roundId, int $id): Response
     {
         $round1 = [
             '1' =>
@@ -84,8 +85,26 @@ class Detailed extends AbstractController
                     'date' => '25.09.2020',
                     'img' => 'https://images.freeimages.com/images/small-previews/223/plane-1529359.jpg']];
 
+        switch ($roundId) {
+            case 1:
+                $round = $round1;
+                break;
+            case 2:
+                $round = $round2;
+                break;
+            case 3:
+                $round = $round3;
+                break;
+            default:
+                $round = null;
+                break;
+        }
+
         return $this->render('pptt/detail.html.twig', [
-            'model' => $round1[$id]
+            'roundId' => $roundId,
+            'id' => $id,
+            'model' => $round[$id],
+            'lang' => $lang
         ]);
     }
 }

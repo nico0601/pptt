@@ -10,10 +10,10 @@ class PPTTController extends AbstractController
 {
 
     /**
-     * @Route("/results/1")
+     * @Route("/results/{lang<\w+>}/{roundId<\d+>}", name="show_rounds")
      */
 
-    public function round(): Response
+    public function round(string $lang, int $roundId): Response
     {
         $round1 = [
             '1' =>
@@ -84,8 +84,25 @@ class PPTTController extends AbstractController
                     'date' => '25.09.2020',
                     'img' => 'https://images.freeimages.com/images/small-previews/223/plane-1529359.jpg']];
 
+        switch ($roundId) {
+            case 1:
+                $round = $round1;
+                break;
+            case 2:
+                $round = $round2;
+                break;
+            case 3:
+                $round = $round3;
+                break;
+            default:
+                $round = null;
+                break;
+        }
+
         return $this->render('pptt/round.html.twig', [
-            'round' => $round1,
+            'roundId' => $roundId,
+            'round' => $round,
+            'lang' => $lang
         ]);
     }
 }
