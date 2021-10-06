@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PPTT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+{% for i in 0..rounds|length-1 %}
+    <h3>Runde {{ i+1 }}:</h3>
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Modell</th>
+            <th scope="col">Flug Distanz</th>
+            <th scope="col">Flug Dauer</th>
+            <th scope="col">Teilnehmer</th>
+            <th scope="col">Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for s in 1..rounds|length %}
+            <tr>
+                <td>{{ rounds[i][s].model }}</td>
+                <td>{{ rounds[i][s].distance }}</td>
+                <td>{{ rounds[i][s].duration }}</td>
+                <td>{{ rounds[i][s].partname }}</td>
+                <td>{{ rounds[i][s].date }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+
+<a class="btn btn-secondary" href="{{ path('show_rounds', {'lang': 'de', 'roundId': 1}) }}" role="button">Runden anzeigen</a>
+</body>
+</html>

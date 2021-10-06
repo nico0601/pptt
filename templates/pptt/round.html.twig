@@ -56,6 +56,14 @@
     </tbody>
 </table>
 
+<a class="btn btn-secondary" href="{{ path('show_overview') }}" role="button">
+    {% if lang == "en" %}
+        {% trans %}Überblick{% endtrans %}
+    {% else %}
+        Überblick
+    {% endif %}
+</a>
+
 <a class="btn btn-warning" href="{{ path('show_rounds', {'lang': 'en', 'roundId': roundId}) }}" role="button">en</a>
 <a class="btn btn-warning" href="{{ path('show_rounds', {'lang': 'de', 'roundId': roundId}) }}" role="button">de</a>
 </body>
