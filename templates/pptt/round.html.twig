@@ -1,21 +1,35 @@
-<table>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PPTT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+</head>
+<body>
+<table class="table table-striped">
+    <thead class="thead-light">
     <tr>
-        <th>Plane Model</th>
-        <th>Flight Distance</th>
-        <th>Flight Duration</th>
-        <th>Participant</th>
-        <th>Date</th>
+        <th scope="col">Plane Model</th>
+        <th scope="col">Flight Distance</th>
+        <th scope="col">Flight Duration</th>
+        <th scope="col">Participant</th>
+        <th scope="col">Date</th>
     </tr>
-    {% for i in 0..model|length-1 %}
-    <tr>
-        <td>{{ model[i] }}</td>
-        <td>{{ distance[i] }}</td>
-        <td>{{ duration[i] }}</td>
-        <td>{{ partname[i] }}</td>
-        <td>{{ date[i] }}</td>
-        <td>
-                <a href="{{ path('show_detail', {'id': i}) }}">i</a>
-        </td>
-    </tr>
+    </thead>
+    <tbody>
+    {% for i in 1..round|length %}
+        <tr>
+            <td>{{ round[i].model }}</td>
+            <td>{{ round[i].distance }}</td>
+            <td>{{ round[i].duration }}</td>
+            <td>{{ round[i].partname }}</td>
+            <td>{{ round[i].date }}</td>
+            <td>
+                <a href="{{ path('show_detail', {'id': i}) }}">info</a>
+            </td>
+        </tr>
     {% endfor %}
+    </tbody>
 </table>
+</body>
+</html>
