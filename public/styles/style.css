@@ -1,0 +1,33 @@
+body {
+    padding: 50px;
+}
+
+section {
+    width: max-content;
+}
+
+a[role="button"] {
+    margin: 5px;
+}
+
+table {
+    margin: 20px 0 !important;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#buttons {
+    width: 100%;
+}
+
+#paperplane {
+    margin-top: 30px;
+    width: 200px;
+}
+
+div.card {
+    margin: 20px 0;
+}
